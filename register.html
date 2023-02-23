@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    <p id = "registerMessage">welcome to the site! please register to continue.</p>
+    <input id = "usernameInput">
+    <br>
+    <input id = "passwordInput">
+    <br>
+    <button id = "registerButton">register</button>
+    <br>
+    <a href="login.html">Already a user? click here</a>
+    <!--the script tag will allow us to define a snippet of JavaScript, or, we could link an external file-->
+    <script>
+        /**
+         * Let's not concern ourselves with the actual backend api, database logic for login/registration
+         * and just focus on some dummy code. This code will obtain html elements from the DOM (document-object-model),
+         * which is the logical representation of all html elements. When the button "registerButton" is clicked,
+         * some data will be obtained from the input boxes, and some basic input validation will occur (username /
+         * password minimum 5 characters, etc.) Depending on if the registration should be considered successful,
+         * the text on the site will be changed.
+         */
+        var messageText = document.getElementById("registerMessage");
+        var usernameInputBox = document.getElementById("usernameInput");
+        var passwordInputBox = document.getElementById("usernameInput");
+        var registerButton = document.getElementById("registerButton");
+        /**
+         * when the onclick event occurs, call the processRegistration function.
+         * (functions can be used & passed around as variables in javascript.)
+         */
+        registerButton.onclick = processRegistration;
+        /**
+         * logic for grabbing the username and password inputs, as well as setting the text on the site depending
+         * on the current behavior of shouldRegister.
+         */
+        function processRegistration(){
+            /**
+             * notice that variables in JavaScript do not require the developer to define types - only 'var'. This
+             * is because JavaScript is 'loosely typed'. Types still exist, but JavaScript treats them all equally.
+             * You may also see 'let' and 'const' used to define variables in JavaScript - we'll get to those later
+             */
+            //grabbing the current values within the input boxes
+            var username = usernameInputBox.value;
+            var password = passwordInputBox.value;
+            //a boolean value returned from shouldRegister
+            var shouldRegisterResult = shouldRegister(username, password);
+            if(shouldRegisterResult){
+                messageText.innerText = "welcome, "+username+"!";
+            }else{
+                messageText.innerText = "invalid registration. please try again"
+            }
+        }
+        /**
+         * @param username
+         * @param password
+         * @returns {boolean} return true if username and password are both over 5 characters, false otherwise.
+         */
+        function shouldRegister(username, password){
+            if(username.length > 5 && password.length > 5){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
+</body>

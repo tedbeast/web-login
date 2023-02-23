@@ -1,0 +1,30 @@
+/*
+Universal selector: select all elements, apply styling rules to them (set the font of the whole page to Monaco)
+ */
+* {
+    font-family: Monaco, monospace;
+}
+/**
+Class selector: select all elements which have been given class 'info' in the html file
+ */
+.info {
+    font-style: italic;
+}
+/**
+Id selector: select the element which has been given the id 'objective' in the html file
+ */
+#objective {
+    font-weight: bold;
+}
+/*
+Element selector: select all elements of a certain type, apply styling rules to them (make all images take up at most
+30% of the width of the screen)
+*/
+img {
+    max-width: 30%;
+    height: auto;
+}
+/*
+Selectors that are more specific get prioritized over selectors that are less specific.
+Inline CSS gets prioritized over external & embedded CSS.
+ */
